@@ -7,9 +7,11 @@ const longestWord = () => {
 
     let longestWord = textArray[0]; //Setter første ord som den største for å sammenligne
   
-    //For of løkke som vil gå gjennom alle ordene og finne lengste ordet
+    //For løkke som vil gå gjennom alle ordene og finne lengste ordet
     for(let word of textArray) {
-        longestWord = (word.length > longestWord.length) ? longestWord=word : longestWord=longestWord;
+        if(word.length > longestWord.length) {
+            longestWord = word;
+        }
     }
 
     return longestWord;
