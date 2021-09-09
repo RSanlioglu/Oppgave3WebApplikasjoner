@@ -1,0 +1,27 @@
+<!--Hentet fra oppgavesettet-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Finn brukere</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+
+  <body>
+    <main id="main">
+      <div id="nameWrapper"> 
+        <label for="name">Søk etter navn</label>
+        <input id="name" type="search" placeholder="Søk etter navn" />
+      </div>
+      <br />
+      <div id="ageWrapper">
+        <label for="age">Filter etter alder</label>
+        <input id="age" type="text" placeholder="Sett minimumsalder" />
+        <button id="filter" type="button">Filter</button>
+      </div>
+      <ul id="users"></ul>
+    </main>
+
+    <script type="module" src="oppgave2.js"></script> <!--Bruker type module da dette ikke fører til errors ved import av users i oppgave2.js-->
+  </body>
+</html>
