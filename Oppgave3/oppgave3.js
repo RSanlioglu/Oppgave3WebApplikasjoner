@@ -2,6 +2,7 @@
 let errorCounter = 0;
 let wordPos = 0;
 let wordIndex = 0;
+let timer_s = 0;
 
 const words = ["conspiracy", "act", "supercalifragilisticexpialidocious"]; //Liste med ord
 
@@ -13,7 +14,7 @@ const btnStart = document.querySelector("button");
 
 //Henter ut ord og skriver den ut til bruker. Dersom det ikke er flere ord så skrives det ut en feilmelding
 const writeWord = () => {
-    (wordIndex < words.length) ? wordOut.innerHTML = words[wordIndex] : wordOut.innerHTML= `Ingen flere ord`;
+    (wordIndex < words.length) ? wordOut.innerHTML = words[wordIndex] : wordOut.innerHTML= `Du brukte ${timer_s} sekunder totalt`;
 }
 
 //Funksjon for å bytte ord og endre på indexen for ordet.
@@ -57,14 +58,20 @@ const updateUi = (key) => {
             0,
             wordPos
           )}</span>${words[wordIndex].slice(wordPos)}`;
+    } else {
+        clearInterval(timer_s); //Når vi har kommet til slutten så slutter vi å time
     }
 }
 
+//funksjon som starter å time hvor langt tid brukeren bruker på å skrive alle ordene. For hvert
+//sekund økes variabelen timer_s med 1
+const time = () => setInterval(() => timer_s++, 1000);
 
 //Funksjon som starter applikasjonen
 const startApp = () => {
     btnStart.disabled = true;
     writeWord();
+    time();
 }
 
 //Lytter til alle taster og håndterer dem
